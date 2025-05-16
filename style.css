@@ -1,0 +1,408 @@
+/* ===== Complete CSS for Lovers Photo Gallery with Responsive Navbar ===== */
+
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+/* Reset & basics */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #fff0f5, #ffe4e1);
+  color: #333;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  animation: fadeIn 1s ease-in;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background: linear-gradient(90deg, #ffc2d1, #ff9aae);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid #ff9aae;
+  animation: slideDown 0.8s ease-out;
+}
+
+/* Logo */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #b03060;
+  font-family: 'Dancing Script', cursive;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+/* Nav links items */
+.nav-links li a {
+  text-decoration: none;
+  color: #b03060;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 10px 16px;
+  border-radius: 30px;
+  transition: all 0.4s ease;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(255, 105, 135, 0.2);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Hover & active nav links */
+.nav-links li a:hover,
+.nav-links li a.active {
+  background-color: #ffb6c1;
+  color: white;
+  box-shadow: 0 6px 12px rgba(255, 105, 135, 0.4);
+}
+
+/* Page container */
+.page {
+  display: none;
+  padding: 70px 25px;
+  animation: fadeIn 1s ease-in-out;
+  min-height: 80vh;
+}
+
+/* Show active page */
+.page.active {
+  display: block;
+}
+
+/* Page header */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+  animation: popIn 0.8s ease forwards;
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  color: #ff4d6d;
+  margin-bottom: 15px;
+  font-family: 'Dancing Script', cursive;
+}
+
+.page-header p {
+  font-size: 1.2rem;
+  color: #a14f66;
+  font-style: italic;
+}
+
+/* Gallery grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 20px;
+  justify-items: center;
+  justify-content: center;
+  animation: slideUp 1s ease-in-out;
+}
+
+/* Gallery items */
+.gallery-item {
+  width: 100%;
+  height: auto;
+  max-width: 320px;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 3px solid #ffb6c1;
+  background-color: #fffafc;
+  animation: popIn 0.8s ease-in-out;
+  margin: 0 auto;
+  display: block;
+}
+
+.gallery-item:hover {
+  transform: scale(1.07) rotate(1deg);
+  box-shadow: 0 12px 24px rgba(255, 105, 135, 0.3);
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 15px;
+  border: 4px solid white;
+  animation: popIn 0.6s ease;
+  object-fit: contain;
+  box-shadow: 0 10px 30px rgba(255, 105, 135, 0.7);
+}
+
+.caption {
+  color: #fff;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-family: 'Dancing Script', cursive;
+  text-shadow: 0 0 10px rgba(255, 105, 135, 0.7);
+  max-width: 90%;
+}
+
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 2.5rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+  user-select: none;
+}
+
+.close-btn:hover {
+  color: #ff7c9f;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@keyframes popIn {
+  0% {transform: scale(0.8); opacity: 0;}
+  100% {transform: scale(1); opacity: 1;}
+}
+
+@keyframes slideDown {
+  0% {transform: translateY(-100%); opacity: 0;}
+  100% {transform: translateY(0); opacity: 1;}
+}
+
+@keyframes slideUp {
+  0% {transform: translateY(40px); opacity: 0;}
+  100% {transform: translateY(0); opacity: 1;}
+}
+
+/* ===== Responsive Navbar with Hamburger ===== */
+
+/* Hamburger button */
+.hamburger {
+  display: none; /* hidden on big screens */
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+
+.hamburger .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #b03060;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Show hamburger on screens 768px or less */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hide nav-links by default */
+  .nav-links {
+    position: fixed;
+    top: 70px; /* below navbar */
+    right: -100%;
+    width: 65%;
+    height: calc(100% - 70px);
+    background: linear-gradient(90deg, #ffc2d1, #ff9aae);
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 25px;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    border-radius: 10px 0 0 10px;
+    z-index: 1050;
+  }
+
+  /* Show nav-links when active */
+  .nav-links.active {
+    right: 0;
+  }
+
+  /* Nav links style for vertical menu */
+  .nav-links li a {
+    font-size: 1.2rem;
+    padding: 14px 20px;
+    display: block;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(255, 105, 135, 0.3);
+  }
+
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    background-color: #ffb6c1;
+    color: white;
+    box-shadow: 0 6px 16px rgba(255, 105, 135, 0.5);
+  }
+}
+
+/* Hamburger toggle animation */
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== Responsive Other Elements ===== */
+
+/* Extra responsiveness for very small screens */
+@media (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    padding: 15px 20px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .nav-links li a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 1.1rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+  }
+
+  .page-header p {
+    font-size: 1rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .gallery-item {
+    max-width: 100%;
+    max-height: auto;
+    border-width: 2px;
+  }
+}
+
+/* Medium screen responsiveness */
+@media (min-width: 481px) and (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 18px 25px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .nav-links li a {
+    font-size: 1.1rem;
+    padding: 11px 14px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .page-header p {
+    font-size: 1.1rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .gallery-item {
+    max-width: 100%;
+    max-height: 280px;
+    border-width: 3px;
+  }
+}
+
+/* Larger tablets and small desktops */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .gallery-item {
+    max-height: 300px;
+  }
+}
+
+/* Desktop and larger screens */
+@media (min-width: 1025px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
